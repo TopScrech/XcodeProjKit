@@ -70,7 +70,7 @@ public class XcodeProj: PropertyList {
 
     // MARK: init
     public convenience init(url: URL) throws {
-//        assert(url.isFileURL)
+        assert(url.isFileURL)
 
         let pbxprojURL = url.isDirectoryURL ?
             url.appendingPathComponent(XcodeProj.pbxprojFileName, isDirectory: false) : url
@@ -154,7 +154,7 @@ public class XcodeProj: PropertyList {
         if let type = Isa(rawValue: isa)?.type {
             return type.init(ref: ref, fields: fields, objects: objects)
         }
-        assertionFailure("Unknown isa=\(isa)")
+//        assertionFailure("Unknown isa=\(isa)")
         return PBXObject(ref: ref, fields: fields, objects: objects)
     }
 

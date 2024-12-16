@@ -94,7 +94,7 @@ open class PropertyList {
     }
 
     public convenience init(url: URL) throws {
-//        assert(url.isFileURL)
+        assert(url.isFileURL)
         do {
             let data = try Data(contentsOf: url)
             try self.init(propertyListData: data)
