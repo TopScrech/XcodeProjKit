@@ -70,7 +70,7 @@ public class XcodeProj: PropertyList {
 
     // MARK: init
     public convenience init(url: URL) throws {
-        assert(url.isFileURL)
+//        assert(url.isFileURL)
 
         let pbxprojURL = url.isDirectoryURL ?
             url.appendingPathComponent(XcodeProj.pbxprojFileName, isDirectory: false) : url
