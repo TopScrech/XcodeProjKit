@@ -1,90 +1,81 @@
-//
-// Isa.swift
-//  XcodeProjKit
-//
-//  Created by phimage on 30/07/2017.
-//  Copyright © 2017 phimage (Eric Marchand). All rights reserved.
-//
-
 import Foundation
 
 public enum Isa: String, CaseIterable, CustomStringConvertible {
-
-    case project = "PBXProject"
-    case containerItemProxy = "PBXContainerItemProxy"
-    case buildFile = "PBXBuildFile"
-    case buildStyle = "PBXBuildStyle"
-    case buildRule = "PBXBuildRule"
-    case aggregateTarget = "PBXAggregateTarget"
-    case nativeTarget = "PBXNativeTarget"
-    case targetDependency = "PBXTargetDependency"
-    case legacybTarget = "PBXLegacyTarget"
-    case reference = "PBXReference"
-    case referenceProxy = "PBXReferenceProxy"
-    case fileReference = "PBXFileReference"
-    case group = "PBXGroup"
-    case variantGroup = "PBXVariantGroup"
-    case copyFilesBuildPhase = "PBXCopyFilesBuildPhase"
-    case frameworksBuildPhase = "PBXFrameworksBuildPhase"
-    case headersBuildPhase = "PBXHeadersBuildPhase"
-    case resourcesBuildPhase = "PBXResourcesBuildPhase"
-    case shellScriptBuildPhase = "PBXShellScriptBuildPhase"
-    case sourcesBuildPhase = "PBXSourcesBuildPhase"
-    case versionGroup = "XCVersionGroup"
-    case configurationList = "XCConfigurationList"
-    case buildConfiguration = "XCBuildConfiguration"
-    case remoteSwiftPackageReference = "XCRemoteSwiftPackageReference"
-    case swiftPackageProductDependency = "XCSwiftPackageProductDependency"
-
+    case project = "PBXProject",
+         containerItemProxy = "PBXContainerItemProxy",
+         buildFile = "PBXBuildFile",
+         buildStyle = "PBXBuildStyle",
+         buildRule = "PBXBuildRule",
+         aggregateTarget = "PBXAggregateTarget",
+         nativeTarget = "PBXNativeTarget",
+         targetDependency = "PBXTargetDependency",
+         legacybTarget = "PBXLegacyTarget",
+         reference = "PBXReference",
+         referenceProxy = "PBXReferenceProxy",
+         fileReference = "PBXFileReference",
+         group = "PBXGroup",
+         variantGroup = "PBXVariantGroup",
+         copyFilesBuildPhase = "PBXCopyFilesBuildPhase",
+         frameworksBuildPhase = "PBXFrameworksBuildPhase",
+         headersBuildPhase = "PBXHeadersBuildPhase",
+         resourcesBuildPhase = "PBXResourcesBuildPhase",
+         shellScriptBuildPhase = "PBXShellScriptBuildPhase",
+         sourcesBuildPhase = "PBXSourcesBuildPhase",
+         versionGroup = "XCVersionGroup",
+         configurationList = "XCConfigurationList",
+         buildConfiguration = "XCBuildConfiguration",
+         remoteSwiftPackageReference = "XCRemoteSwiftPackageReference",
+         swiftPackageProductDependency = "XCSwiftPackageProductDependency"
+    
     public var description: String {
-        return rawValue
+        rawValue
     }
-
+    
     static func from(className: String) -> Isa? {
         for isa in Isa.allCases {
             if className.contains(isa.rawValue) {
                 return isa
             }
         }
+        
         return nil
     }
 }
 
 extension Isa: Comparable {
     public static func < (lhs: Isa, rhs: Isa) -> Bool {
-        return lhs.rawValue < rhs.rawValue
+        lhs.rawValue < rhs.rawValue
     }
 }
 
 extension Isa {
-
     public var type: PBXObject.Type {
         switch self {
-        case .project: return PBXProject.self
-        case .containerItemProxy: return PBXContainerItemProxy.self
-        case .buildFile: return PBXBuildFile.self
-        case .copyFilesBuildPhase: return PBXCopyFilesBuildPhase.self
-        case .frameworksBuildPhase: return PBXFrameworksBuildPhase.self
-        case .headersBuildPhase: return PBXHeadersBuildPhase.self
-        case .resourcesBuildPhase: return PBXResourcesBuildPhase.self
-        case .shellScriptBuildPhase: return PBXShellScriptBuildPhase.self
-        case .sourcesBuildPhase: return PBXSourcesBuildPhase.self
-        case .buildStyle: return PBXBuildStyle.self
-        case .aggregateTarget: return PBXAggregateTarget.self
-        case .nativeTarget: return PBXNativeTarget.self
-        case .legacybTarget: return PBXLegacyTarget.self
-        case .targetDependency: return PBXTargetDependency.self
-        case .reference: return PBXReference.self
-        case .referenceProxy: return PBXReferenceProxy.self
-        case .fileReference: return PBXFileReference.self
-        case .group: return PBXGroup.self
-        case .variantGroup: return PBXVariantGroup.self
-        case .versionGroup: return XCVersionGroup.self
-        case .configurationList: return XCConfigurationList.self
-        case .buildConfiguration: return XCBuildConfiguration.self
-        case .remoteSwiftPackageReference: return XCRemoteSwiftPackageReference.self
-        case .swiftPackageProductDependency: return XCSwiftPackageProductDependency.self
-        case .buildRule: return PBXBuildRule.self
+        case .project: PBXProject.self
+        case .containerItemProxy: PBXContainerItemProxy.self
+        case .buildFile: PBXBuildFile.self
+        case .copyFilesBuildPhase: PBXCopyFilesBuildPhase.self
+        case .frameworksBuildPhase: PBXFrameworksBuildPhase.self
+        case .headersBuildPhase: PBXHeadersBuildPhase.self
+        case .resourcesBuildPhase: PBXResourcesBuildPhase.self
+        case .shellScriptBuildPhase: PBXShellScriptBuildPhase.self
+        case .sourcesBuildPhase: PBXSourcesBuildPhase.self
+        case .buildStyle: PBXBuildStyle.self
+        case .aggregateTarget: PBXAggregateTarget.self
+        case .nativeTarget: PBXNativeTarget.self
+        case .legacybTarget: PBXLegacyTarget.self
+        case .targetDependency: PBXTargetDependency.self
+        case .reference: PBXReference.self
+        case .referenceProxy: PBXReferenceProxy.self
+        case .fileReference: PBXFileReference.self
+        case .group: PBXGroup.self
+        case .variantGroup: PBXVariantGroup.self
+        case .versionGroup: XCVersionGroup.self
+        case .configurationList: XCConfigurationList.self
+        case .buildConfiguration: XCBuildConfiguration.self
+        case .remoteSwiftPackageReference: XCRemoteSwiftPackageReference.self
+        case .swiftPackageProductDependency: XCSwiftPackageProductDependency.self
+        case .buildRule: PBXBuildRule.self
         }
     }
 }

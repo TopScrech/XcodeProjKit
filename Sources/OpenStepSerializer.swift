@@ -1,15 +1,6 @@
-//
-//  OpenStepSerializer.swift
-//  XcodeProjKit
-//
-//  Created by Eric Marchand on 30/07/2017.
-//  Copyright © 2017 AnOrgaName. All rights reserved.
-//
-
 import Foundation
 
-class OpenStepSerializer {
-
+final class OpenStepSerializer {
     let projectName: String
     let projectFile: XcodeProj
     let lineEnding: String
