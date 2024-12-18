@@ -1,11 +1,3 @@
-//
-//  XcodeProjKitWriteTests.swift
-//  XcodeProjKitTests
-//
-//  Created by phimage on 30/07/2017.
-//  Copyright © 2017 phimage (Eric Marchand). All rights reserved.
-//
-
 import XCTest
 @testable import XcodeProjKit
 
@@ -16,7 +8,7 @@ class XcodeProjKitWriteTests: XCTestCase {
     
     static override func setUp() {
         do {
-           try FileManager.default.createDirectory(atPath: XcodeProjKitWriteTests.directory, withIntermediateDirectories: true)
+            try FileManager.default.createDirectory(atPath: XcodeProjKitWriteTests.directory, withIntermediateDirectories: true)
         } catch {
             XCTFail("\(error)")
         }
@@ -102,15 +94,15 @@ class XcodeProjKitWriteTests: XCTestCase {
                 XCTAssertNotNil(proj.project.buildConfigurationList)
                 let testURL = URL(fileURLWithPath: XcodeProjKitWriteTests.directory + resource.replacingOccurrences(of: "ok/", with: "") + "." + XcodeProj.pbxprojFileExtension)
                 try proj.write(to: testURL)
-
+                
                 assertContentsEqual(url, testURL)
-
+                
                 // test passing by xml before recoding to openstep
                 let testURLPlist = URL(fileURLWithPath: XcodeProjKitWriteTests.directory + resource.replacingOccurrences(of: "ok/", with: "") + ".plist")
                 try proj.write(to: testURLPlist, format: .xml)
                 try XcodeProj(url: testURLPlist).write(to: testURLPlist.appendingPathExtension("pbxproj"), format: .openStep, projectName: proj.projectName, lineEnding: proj.lineEnding)
                 assertContentsEqual(url, testURLPlist.appendingPathExtension("pbxproj"))
-
+                
                 // test passing by json before recoding to openstep
                 let testURLJSON = URL(fileURLWithPath: XcodeProjKitWriteTests.directory + resource.replacingOccurrences(of: "ok/", with: "") + ".json")
                 try proj.write(to: testURLJSON, format: .json)
@@ -123,9 +115,4 @@ class XcodeProjKitWriteTests: XCTestCase {
             XCTFail("Missing resource \(resource)")
         }
     }
-
 }
-
-
-
-

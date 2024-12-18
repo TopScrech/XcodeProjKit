@@ -1,11 +1,3 @@
-//
-//  XcodeProjKitParseKoTests.swift
-//  XcodeProjKitTests
-//
-//  Created by phimage on 30/07/2017.
-//  Copyright © 2017 phimage (Eric Marchand). All rights reserved.
-//
-
 import XCTest
 @testable import XcodeProjKit
 
@@ -40,5 +32,4 @@ class XcodeProjKitParseKoTests: XCTestCase {
             XCTFail("Missing resource \(resource)")
         }
     }
-
 }
